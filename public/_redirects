@@ -1,0 +1,2 @@
+# Redirect all requests to index.html (for Next.js static export)
+/*    /index.html   200
