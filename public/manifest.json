@@ -1,11 +1,11 @@
 {
-  "name": "DivineTruthAscension",
-  "short_name": "Ascension",
+  "name": "Divine Truth Ascension",
+  "short_name": "DTA",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4c1d95",
-  "description": "A sanctuary for seekers, ascension, and divine wisdom.",
+  "background_color": "#ffffff",
+  "theme_color": "#4a148c",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/icon-192.png",

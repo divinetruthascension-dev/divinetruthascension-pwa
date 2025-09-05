@@ -1,15 +1,15 @@
-
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const withPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
+
+const nextConfig = withPWA({
   reactStrictMode: true,
-
-  // Needed because Netlify static export doesn’t support Next.js Image Optimization
-  images: { 
-    unoptimized: true, 
-  },
-
-  // Ensures all pages get a trailing slash (/about/ instead of /about)
+  images: { unoptimized: true },
   trailingSlash: true,
-};
+});
 
 module.exports = nextConfig;
