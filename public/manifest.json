@@ -1,11 +1,12 @@
 {
-  "name": "DivineTruthAscension",
-  "short_name": "Ascension",
+  "name": "Divine Truth Ascension",
+  "short_name": "DTA",
+  "description": "A spiritual social platform powered by Next.js PWA",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#4B0082",
-  "description": "A spiritual social platform for divine truth and ascension.",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/icon-192.png",

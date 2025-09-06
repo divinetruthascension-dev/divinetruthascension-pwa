@@ -1,21 +1,11 @@
 {
-  "name": "divinetruthascension-pwa",
-  "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.5.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "babel-loader": "^9.1.3",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^15.5.2"
+    "next-pwa": "^5.6.0"
   }
 }
