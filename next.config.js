@@ -1,15 +1,8 @@
 // next.config.js
-const withPWA = require("next-pwa")({
-  dest: "public",
-  disable: process.env.NODE_ENV === "development",
-});
-
-module.exports = withPWA({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  swcMinify: false, // disable SWC, fallback to Babel
   reactStrictMode: true,
+};
 
-  webpack: (config) => {
-  
-    config.cache = false;
-    return config;
-  },
-});
+module.exports = nextConfig;
