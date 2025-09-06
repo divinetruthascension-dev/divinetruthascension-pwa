@@ -16,7 +16,8 @@
   "devDependencies": {
     "@capacitor/cli": "^7.4.3",
     "@capacitor/core": "^7.4.3",
-    "@tailwindcss/postcss": "^4.1.13"
+    "@tailwindcss/postcss": "^4.1.13",
+    "eslint": "^9.35.0"
   },
   "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).",
   "main": "_document.js",
