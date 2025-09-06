@@ -6,26 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@next/bundle-analyzer": "^15.5.2",
-    "@tailwindcss/postcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.2",
-    "tailwindcss": "^4"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
-    "@babel/preset-react": "^7.27.1",
-    "json5-loader": "^4.0.1",
-    "next": "14.2",
-    "next-pwa": "^5.6.0",
-    "path-browserify": "^1.0.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "yaml-loader": "^0.8.1"
+    "next": "15.5.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }

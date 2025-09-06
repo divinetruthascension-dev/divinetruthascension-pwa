@@ -1,25 +1,48 @@
-import { useEffect } from "react";
-import "@/styles/globals.css";
+// Simple service worker for offline caching
+const CACHE_NAME = "dta-cache-v1";
+const urlsToCache = [
+  "/",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png",
+];
 
-export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("/service-worker.js")
-        .then(() => console.log("✅ Service Worker registered"))
-        .catch((err) => console.error("❌ SW registration failed:", err));
-    }
-  }, []);
+// Install event
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(urlsToCache);
+    })
+  );
+  self.skipWaiting();
+});
 
-  return <Component {...pageProps} />;
-}
+// Activate event (cleanup old caches)
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
+          }
+        })
+      )
+    )
+  );
+  self.clients.claim();
+});
 
-/* =======================
-   Notes for Setup
-   =======================
-1. Place this file at: /pages/_app.js
-2. Ensure you have /public/service-worker.js in place.
-3. This registers the service worker automatically on load.
-4. Combined with manifest.json + icons, your app is now a fully installable PWA.
-*/
-
+// Fetch event (cache first, then network)
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return (
+        response ||
+        fetch(event.request).catch(() =>
+          caches.match("/") // fallback to home
+        )
+      );
+    })
+  );
+});
