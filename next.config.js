@@ -8,7 +8,7 @@ module.exports = withPWA({
   reactStrictMode: true,
 
   webpack: (config) => {
-    // ❌ Disable Webpack cache (avoids snapshot errors in Termux/Android)
+  
     config.cache = false;
     return config;
   },
