@@ -1,36 +1,25 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: false, // ✅ force Babel instead of SWC
 
-  async rewrites() {
-    return [
-      { source: '/profile/:username', destination: '/users/:username' },
-      { source: '/post/:id', destination: '/posts/:id' },
-      { source: '/api/auth/:path*', destination: 'https://external-auth-service.com/:path*' },
-      { source: '/spiritual/:path*', destination: '/content/:path*' },
-    ];
-  },
-
-  async redirects() {
-    return [
-      { source: '/old-profile/:username', destination: '/profile/:username', permanent: true },
-      { source: '/old-post/:id', destination: '/post/:id', permanent: true },
-    ];
-  },
-
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['next/babel'],
-          sourceType: 'module',
-        },
-      },
+  webpack: (config, { isServer }) => {
+    // Ensure ES Modules are treated correctly
+    config.module.rules = config.module.rules.map(rule => {
+      if (
+        rule.test &&
+        String(rule.test) === String(/\.(tsx|ts|js|mjs|jsx)$/) &&
+        rule.use &&
+        rule.use.loader === 'next-babel-loader'
+      ) {
+        rule.use.options = {
+          ...rule.use.options,
+          sourceType: 'unambiguous', // allows both CommonJS + ES modules
+        };
+      }
+      return rule;
     });
+
     return config;
   },
 };
