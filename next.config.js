@@ -1,12 +1,15 @@
 // next.config.js
-const withPWA = require('next-pwa')({
-  dest: 'public', // Service worker will be generated here
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development', // disable in dev
+const withPWA = require("next-pwa")({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
 });
 
 module.exports = withPWA({
   reactStrictMode: true,
-  swcMinify: true,
+
+  webpack: (config) => {
+    // ❌ Disable Webpack cache (avoids snapshot errors in Termux/Android)
+    config.cache = false;
+    return config;
+  },
 });
