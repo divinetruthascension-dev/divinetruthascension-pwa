@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: false, // ✅ force Babel instead of SWC
 
   async rewrites() {
     return [
@@ -18,16 +19,15 @@ const nextConfig = {
     ];
   },
 
-  // 🔧 Webpack config override
   webpack(config) {
     config.module.rules.push({
-      test: /\.js$/, // apply to .js files
+      test: /\.js$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
         options: {
           presets: ['next/babel'],
-          sourceType: 'module', // ✅ treat files as ES modules
+          sourceType: 'module',
         },
       },
     });
