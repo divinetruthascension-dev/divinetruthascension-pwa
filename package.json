@@ -12,5 +12,24 @@
     "next": "15.5.2",
     "react": "18.3.1",
     "react-dom": "18.3.1"
-  }
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@tailwindcss/postcss": "^4.1.13"
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).",
+  "main": "_document.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divinetruthascension-dev/divinetruthascension-pwa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/divinetruthascension-dev/divinetruthascension-pwa/issues"
+  },
+  "homepage": "https://github.com/divinetruthascension-dev/divinetruthascension-pwa#readme"
 }
